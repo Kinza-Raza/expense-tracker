@@ -1,22 +1,41 @@
-import React from 'react'
+import React from "react";
+import { GlobalContext } from "./context/GlobalState";
 
 export const IncomeExpenses = () => {
-    return (
-        <div className="inc-exp-cont">
-            <table>
-                <tbody>
-                <tr>
-                    <th>Income</th>
-                    <th>Expense</th>
-                </tr>
+  const { transactions } = React.useContext(GlobalContext);
 
-                <tr>
-                <td className="inc" id="inc" style={{color:"green"}}><strong>+0.00 PKR</strong></td>
-                <td className="exp" id="exp" style={{color:"red"}}><strong>-0.00 PKR</strong></td>
+  const trans_amount = transactions.map((transaction) => transaction.amount);
 
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    )
-}
+  const income = trans_amount
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  const expense = (
+    trans_amount
+      .filter((item) => item < 0)
+      .reduce((acc, item) => (acc += item), 0) * -1
+  ).toFixed(2);
+
+  return (
+    <div className="inc-exp-cont">
+      <table>
+        <tbody>
+          <tr>
+            <th>Income</th>
+            <th>Expense</th>
+          </tr>
+
+          <tr>
+            <td className="inc" id="inc" style={{ color: "green" }}>
+              <strong>{income} PKR</strong>
+            </td>
+            <td className="exp" id="exp" style={{ color: "red" }}>
+              <strong>{expense} PKR</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
