@@ -94,21 +94,44 @@ th, td {
 
 .new-tr {
   text-align: left;
-  justify-content: space-between;
 }
 
 .new-tr input {
   width: 500px;
   height:40px;
   font-family:  'Poppins', sans-serif;
+  text-align: center;
+  font-size: 24px;
 }
 
 .new-tr-btn {
-
+  background:#515070;
+  color: #fff;
+  border-radius: 30px;
+  transition: all .25s ease;
+  height: 50px;
   width: 300px;
-  height:40px;
-  font-family:  'Poppins', sans-serif;
-  background-color: #515070;
-  color:white;
-  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+}
+.new-tr-btn::after,.new-tr-btn::before {
+  content: '';
+  position: absolute;
+  opacity: .3;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  bottom: 0px;
+  z-index: -1;
+  transition: all .25s ease;
+}
+.new-tr-btn:hover {
+  transform: translate(-12px, -12px);
+}
+.new-tr-btn:hover:after {
+  transform: translate(6px, 6px);
+}
+.new-tr-btn:hover:before {
+  transform: translate(12px, 12px);
 }

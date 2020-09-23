@@ -16,7 +16,9 @@ function App() {
       </div>
       <IncomeExpenses></IncomeExpenses>
       <TransactionList></TransactionList>
+      <div>
       <NewTransaction></NewTransaction>
+      </div>
       </GlobalProvider>
     
 
